@@ -1,0 +1,17 @@
+version: '3'
+services:
+  arrowflight-server:
+    build:
+      context: ./server  # Directory containing the server code
+      dockerfile: Dockerfile
+    ports:
+      - "8815:8815"  # Expose the ArrowFlight server port
+    # command: sleep infinity
+
+  arrowflight-client:
+    build:
+      context: ./client  # Directory containing the client code
+      dockerfile: Dockerfile
+    depends_on:
+      - arrowflight-server
+    # command: sleep infinity
